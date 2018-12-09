@@ -9,6 +9,6 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.fs.copy(this.templatePath('**/*'), this.destinationRoot());
+    this.directory(this.sourceRoot(), this.destinationRoot());
   }
 };
