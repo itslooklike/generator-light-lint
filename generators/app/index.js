@@ -5,7 +5,7 @@ const { name } = require('../../package.json');
 
 const CONFLICT_PREFIX = 'conflict';
 const conflictFiles = [`${CONFLICT_PREFIX}.gitignore`];
-const filesToCopy = ['.editorconfig', '.gitattributes', '.prettierrc.js'];
+const filesToCopy = ['.editorconfig', '.gitattributes', '.prettierrc.js', '.eslintrc.js'];
 
 module.exports = class extends Generator {
   prompting() {
@@ -25,5 +25,19 @@ module.exports = class extends Generator {
     });
 
     // this.fs.copy(this.sourceRoot(), this.destinationRoot());
+  }
+
+  install() {
+    this.npmInstall(
+      [
+        'prettier',
+        'eslint',
+        'eslint-plugin-promise',
+        'eslint-plugin-import',
+        'eslint-plugin-node',
+        'eslint-config-prettier',
+      ],
+      { 'save-dev': true }
+    );
   }
 };
