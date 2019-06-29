@@ -5,7 +5,13 @@ const { name } = require('../../package.json');
 
 const CONFLICT_PREFIX = 'conflict';
 const conflictFiles = [`${CONFLICT_PREFIX}.gitignore`];
-const filesToCopy = ['.editorconfig', '.gitattributes', '.prettierrc.js', '.eslintrc.js'];
+const filesToCopy = [
+  '.editorconfig',
+  '.gitattributes',
+  '.prettierignore',
+  '.prettierrc.js',
+  '.eslintrc.js',
+];
 
 module.exports = class extends Generator {
   prompting() {
