@@ -38,9 +38,10 @@ module.exports = class extends Generator {
       [
         'prettier',
         'eslint',
-        'eslint-plugin-promise',
-        'eslint-plugin-import',
         'eslint-plugin-node',
+        'eslint-plugin-import',
+        'eslint-plugin-promise',
+        'eslint-plugin-unicorn',
         'eslint-config-prettier',
       ],
       { 'save-dev': true }

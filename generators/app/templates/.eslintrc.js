@@ -5,8 +5,16 @@ module.exports = {
     es6: true,
   },
   parserOptions: {
-    ecmaVersion: 8,
+    ecmaVersion: 2019,
     sourceType: 'module',
   },
-  extends: ['eslint:recommended', 'prettier'],
+  extends: [
+    'eslint:recommended',
+    'plugin:node/recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:promise/recommended',
+    'plugin:unicorn/recommended',
+    'prettier',
+  ],
 };
