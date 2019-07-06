@@ -36,13 +36,21 @@ module.exports = class extends Generator {
   install() {
     this.npmInstall(
       [
-        'prettier',
         'eslint',
-        'eslint-plugin-node',
+        'babel-eslint',
         'eslint-plugin-import',
+        'eslint-plugin-react',
+        'eslint-plugin-react-hooks',
+        'eslint-plugin-flowtype',
+        'eslint-plugin-node',
+        'eslint-plugin-security',
         'eslint-plugin-promise',
         'eslint-plugin-unicorn',
+        'eslint-plugin-jsx-a11y',
         'eslint-config-prettier',
+        'eslint-plugin-ramda',
+        'eslint-plugin-jest',
+        'prettier',
       ],
       { 'save-dev': true }
     );
