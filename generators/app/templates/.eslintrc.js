@@ -25,7 +25,7 @@ module.exports = {
     'prettier',
     'prettier/react',
   ],
-  plugins: ['react-hooks'],
+  plugins: ['ramda', 'react-hooks'],
   rules: {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
