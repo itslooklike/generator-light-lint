@@ -11,6 +11,7 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
+    'standard',
     'plugin:import/errors',
     'plugin:import/warnings',
     'plugin:node/recommended',
@@ -27,6 +28,7 @@ module.exports = {
   ],
   plugins: ['ramda', 'react-hooks'],
   rules: {
+    'no-console': 1,
     'react/prop-types': 0,
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',

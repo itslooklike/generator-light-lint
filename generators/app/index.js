@@ -47,10 +47,12 @@ module.exports = class extends Generator {
         'eslint-plugin-promise',
         'eslint-plugin-unicorn',
         'eslint-plugin-jsx-a11y',
-        'eslint-config-prettier',
+        'eslint-config-standard',
+        'eslint-plugin-standard',
         'eslint-plugin-ramda',
         'eslint-plugin-jest',
         'prettier',
+        'eslint-config-prettier',
       ],
       { 'save-dev': true }
     );
