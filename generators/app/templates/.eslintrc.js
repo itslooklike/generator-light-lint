@@ -30,6 +30,7 @@ module.exports = {
   rules: {
     'no-console': 1,
     'react/prop-types': 0,
+    'unicorn/prevent-abbreviations': 0,
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
   },
