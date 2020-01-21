@@ -3,8 +3,8 @@ module.exports = {
     node: true,
   },
   parserOptions: {
-    ecmaVersion: 8,
+    ecmaVersion: 2020,
     sourceType: 'module',
   },
-  extends: ['eslint:recommended', 'prettier'],
-};
+  extends: ['eslint:recommended', 'standard', 'prettier'],
+}
