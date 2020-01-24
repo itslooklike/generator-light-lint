@@ -11,6 +11,7 @@ const filesToCopy = [
   '.prettierignore',
   '.prettierrc.js',
   '.eslintrc.js',
+  '.eslintignore',
 ]
 
 module.exports = class extends Generator {
