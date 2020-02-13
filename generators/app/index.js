@@ -1,25 +1,25 @@
 const Generator = require('yeoman-generator')
-const chalk = require('chalk')
-const yosay = require('yosay')
-const { name } = require('../../package.json')
 
 const CONFLICT_PREFIX = 'conflict'
 const conflictFiles = [`${CONFLICT_PREFIX}.gitignore`]
-const filesToCopy = [
-  '.editorconfig',
-  '.gitattributes',
-  '.prettierignore',
-  '.prettierrc.js',
-  '.eslintrc.js',
-  '.eslintignore',
-]
+const lightVersionFiles = ['.editorconfig', '.gitattributes', '.prettierignore', '.prettierrc.js']
+const filesToCopy = [...lightVersionFiles, '.eslintrc.js', '.eslintignore']
 
 module.exports = class extends Generator {
-  prompting() {
-    this.log(yosay(`Welcome to the grand ${chalk.red(name)} generator!`))
+  async prompting() {
+    this.answers = await this.prompt([
+      {
+        type: 'confirm',
+        name: 'lightVersion',
+        message: 'Would you like to use light version?',
+      },
+    ])
   }
 
   writing() {
+    const { lightVersion } = this.answers
+    const files = lightVersion ? lightVersionFiles : filesToCopy
+
     conflictFiles.forEach((fileName) => {
       this.fs.copy(
         this.templatePath(fileName),
@@ -27,14 +27,16 @@ module.exports = class extends Generator {
       )
     })
 
-    filesToCopy.forEach((fileName) => {
+    files.forEach((fileName) => {
       this.fs.copy(this.templatePath(fileName), this.destinationPath(fileName))
     })
-
-    // this.fs.copy(this.sourceRoot(), this.destinationRoot());
   }
 
   install() {
+    const { lightVersion } = this.answers
+
+    if (lightVersion) return
+
     this.npmInstall(
       [
         'eslint',
