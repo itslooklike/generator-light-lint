@@ -6,7 +6,14 @@ const lightVersionFiles = ['.editorconfig', '.gitattributes', '.prettierignore',
 const filesToCopy = [...lightVersionFiles, '.eslintrc.js', '.eslintignore']
 
 module.exports = class extends Generator {
+  constructor(args, opts) {
+    super(args, opts)
+    this.answers = {}
+    this.option('light')
+  }
+
   async prompting() {
+    if (this.options.light) return
     this.answers = await this.prompt([
       {
         type: 'confirm',
@@ -18,7 +25,8 @@ module.exports = class extends Generator {
 
   writing() {
     const { lightVersion } = this.answers
-    const files = lightVersion ? lightVersionFiles : filesToCopy
+    const { light } = this.options
+    const files = lightVersion || light ? lightVersionFiles : filesToCopy
 
     conflictFiles.forEach((fileName) => {
       this.fs.copy(
