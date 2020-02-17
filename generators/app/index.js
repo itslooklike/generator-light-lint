@@ -3,7 +3,13 @@ const Generator = require('yeoman-generator')
 const CONFLICT_PREFIX = 'conflict'
 const conflictFiles = [`${CONFLICT_PREFIX}.gitignore`]
 const lightVersionFiles = ['.editorconfig', '.gitattributes', '.prettierignore', '.prettierrc.js']
-const filesToCopy = [...lightVersionFiles, '.eslintrc.js', '.eslintignore']
+const filesToCopy = [
+  ...lightVersionFiles,
+  '.eslintrc.js',
+  '.eslintignore',
+  '.huskyrc.js',
+  'lint-staged.config.js',
+]
 
 module.exports = class extends Generator {
   constructor(args, opts) {
@@ -56,6 +62,8 @@ module.exports = class extends Generator {
         'eslint-plugin-node',
         'prettier',
         'eslint-config-prettier',
+        'lint-staged',
+        'husky',
       ],
       { 'save-dev': true }
     )
