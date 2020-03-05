@@ -18,16 +18,16 @@ module.exports = class extends Generator {
     this.option('light')
   }
 
-  async prompting() {
-    if (this.options.light) return
-    this.answers = await this.prompt([
-      {
-        type: 'confirm',
-        name: 'lightVersion',
-        message: 'Would you like to use light version?',
-      },
-    ])
-  }
+  // async prompting() {
+  //   if (this.options.light) return
+  //   this.answers = await this.prompt([
+  //     {
+  //       type: 'confirm',
+  //       name: 'lightVersion',
+  //       message: 'Would you like to use light version?',
+  //     },
+  //   ])
+  // }
 
   writing() {
     const { lightVersion } = this.answers
