@@ -7,32 +7,19 @@ const filesToCopy = [
   ...lightVersionFiles,
   '.eslintrc.js',
   '.eslintignore',
-  '.huskyrc.js',
+  '.huskyrc',
   'lint-staged.config.js',
 ]
 
 module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts)
-    this.answers = {}
-    this.option('light')
+    this.option('pure')
   }
 
-  // async prompting() {
-  //   if (this.options.light) return
-  //   this.answers = await this.prompt([
-  //     {
-  //       type: 'confirm',
-  //       name: 'lightVersion',
-  //       message: 'Would you like to use light version?',
-  //     },
-  //   ])
-  // }
-
   writing() {
-    const { lightVersion } = this.answers
-    const { light } = this.options
-    const files = lightVersion || light ? lightVersionFiles : filesToCopy
+    const { pure } = this.options
+    const files = pure ? lightVersionFiles : filesToCopy
 
     conflictFiles.forEach((fileName) => {
       this.fs.copy(
@@ -47,9 +34,9 @@ module.exports = class extends Generator {
   }
 
   install() {
-    const { lightVersion } = this.answers
+    const { pure } = this.options
 
-    if (lightVersion) return
+    if (pure) return
 
     this.npmInstall(
       [
