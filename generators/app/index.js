@@ -39,6 +39,10 @@ module.exports = class extends Generator {
     const { pure } = this.options
     if (pure) return
 
+    if (!fs.existsSync('./index.js')) {
+      exec('touch index.js')
+    }
+
     if (!fs.existsSync('./package.json')) {
       exec('npm init -y')
     }
