@@ -1,3 +1,5 @@
+const fs = require('fs')
+const { exec } = require('child_process')
 const Generator = require('yeoman-generator')
 
 const CONFLICT_PREFIX = 'conflict'
@@ -35,8 +37,15 @@ module.exports = class extends Generator {
 
   install() {
     const { pure } = this.options
-
     if (pure) return
+
+    if (!fs.existsSync('./package.json')) {
+      exec('npm init -y')
+    }
+
+    if (!fs.existsSync('./.git')) {
+      exec('git init')
+    }
 
     this.npmInstall(
       [
