@@ -51,6 +51,11 @@ module.exports = class extends Generator {
       exec('git init')
     }
 
+    if (!fs.existsSync('./README.md')) {
+      exec('touch README.md')
+      exec('git add README.md && git commit --no-verify -m init')
+    }
+
     this.npmInstall(
       [
         'eslint',
@@ -62,6 +67,7 @@ module.exports = class extends Generator {
         'eslint-plugin-node',
         'prettier',
         'eslint-config-prettier',
+        'eslint-config-too-lazy',
         'lint-staged',
         'husky',
       ],
