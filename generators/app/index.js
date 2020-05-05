@@ -16,10 +16,7 @@ module.exports = class extends Generator {
         dot: true,
       },
     })
-  }
 
-  initializing() {
-    this.spawnCommandSync('npm', ['init', '-y'])
-    this.spawnCommandSync('git', ['init', '--quiet'])
+    this.spawnCommandSync('git', ['init', name, '--quiet'])
   }
 }
